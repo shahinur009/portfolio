@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import pic from '../../public/shahin picture linkedin.png'
 import { IoCloseSharp } from "react-icons/io5";
 import { AiOutlineMenu } from "react-icons/ai";
+import { Link } from "react-scroll";
 
 function Navbar() {
   const [menu, setMenu] = useState(false);
@@ -17,19 +18,16 @@ function Navbar() {
     },
     {
       id: 3,
-      text: "Portfolio",
+      text: "Skills",
     },
     {
       id: 4,
-      text: "Skill",
+      text: "Projects",
     },
     {
       id: 5,
       text: "Contact",
     },
-    {
-        id: 6,
-        button: 'Download'    }
   ];
   return (
     <>

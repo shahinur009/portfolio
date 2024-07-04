@@ -5,7 +5,7 @@ function Footer() {
     return (
         <>
             <hr />
-            <footer className="py-12">
+            <footer className="py-12 mt-12">
                 <div className="max-w-screen-2xl container mx-auto px-4 md:px-20">
                     <div className=" flex flex-col items-center justify-center">
                         <div className="flex space-x-4">
@@ -26,7 +26,7 @@ function Footer() {
                             <p className="text-sm">
                                 &copy; 2024. All rights reserved.
                             </p>
-                            <p className="text-sm">Supportive Partner ❤️ Ankush</p>
+                            <p className="text-sm">❤️Md. Shahinur Islam</p>
                         </div>
                     </div>
                 </div>
