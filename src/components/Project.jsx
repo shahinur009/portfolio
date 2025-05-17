@@ -76,10 +76,10 @@ function Project() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8 px-4">
           {cardItem.map(({ id, logo, name, link, text }) => (
             <div
-              className="border-2 border-gray-200 rounded-lg shadow-lg overflow-hidden hover:scale-105 duration-300 transition-transform flex flex-col"
+              className="border-2 border-gray-200 rounded-lg shadow-lg overflow-hidden hover:scale-105 duration-300 transition-transform flex flex-col bg-slate-200"
               key={id}
             >
-              <div className="flex justify-center bg-gray-50">
+              <div className="flex justify-center">
                 <img
                   src={logo}
                   className="w-full h-60 object-contain"

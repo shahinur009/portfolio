@@ -32,9 +32,12 @@ function Contact() {
     }
   };
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-screen-2xl container mx-auto px-4 md:px-20 my-8">
+    <div
+      name="Contact"
+      className="grid grid-cols-1 md:grid-cols-2 gap-8 container mx-auto px-4 md:px-10 my-4"
+    >
       {/* Personal Information Section */}
-      <div className="border-2 border-gray-200 rounded-lg shadow-lg p-6 bg-white">
+      <div className="border-2 border-gray-200 rounded-lg shadow-lg p-6 bg-slate-200">
         <h1 className="text-3xl font-bold mb-6">Personal Information</h1>
 
         <div className="space-y-6">
@@ -140,20 +143,11 @@ function Contact() {
       </div>
 
       {/* Contact Form Section */}
-      <div className="border-2 border-gray-200 rounded-lg shadow-lg p-6 bg-white">
+      <div className="border-2 border-gray-200 p-6 rounded-lg shadow-lg bg-slate-200">
         <h1 className="text-3xl font-bold mb-4">Contact me</h1>
-        <p className="text-gray-600 mb-6">
-          Please fill out the form below to contact me
-        </p>
-
-        <div className="flex flex-col items-center justify-center">
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="w-full max-w-md md:px-8 md:py-6 p-4"
-          >
-            <h1 className="text-xl font-semibold mb-6 text-center">
-              Send Your Message
-            </h1>
+        <div className="flex flex-col items-center justify-center border-2 shadow-lg">
+          <form onSubmit={handleSubmit(onSubmit)} className="w-full p-2">
+            <h1 className="text-xl font-semibold mb-6">Send Your Message</h1>
 
             <div className="flex flex-col mb-4">
               <label className="block text-gray-700 mb-2">Full Name</label>

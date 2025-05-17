@@ -1,5 +1,5 @@
 import { ReactTyped } from "react-typed";
-import pic from "../../public/shahin picture linkedin.png";
+import pic from "../../public/shahin.png";
 import {
   FaInstagram,
   FaLinkedin,
@@ -89,10 +89,10 @@ function Banner() {
               </div>
             </div>
           </div>
-          <div className="md:w-1/2 md:ml-48 md:mt-20 mt-8 order-1 flex justify-center items-center">
+          <div className="md:w-1/2 md:ml-48 md:mt-20 mt-8 order-1 ">
             <img
               src={pic}
-              className="rounded-full md:w-[480px] md:h-[440px] flex justify-center items-center mx-auto"
+              className="rounded-full md:w-[380px] md:h-[340px] flex mx-auto bg-slate-200"
               alt=""
             />
           </div>
