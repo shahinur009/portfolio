@@ -73,27 +73,29 @@ function Project() {
       <div>
         <h1 className="text-3xl font-bold mb-5">Projects</h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 my-5">
-          {cardItem.map(({ id, logo, name, link, github, text }) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8 px-4">
+          {cardItem.map(({ id, logo, name, link, text }) => (
             <div
-              className="border-[2px] rounded-lg shadow-lg p-1 cursor-pointer hover:scale-105 duration-300"
+              className="border-2 border-gray-200 rounded-lg shadow-lg overflow-hidden hover:scale-105 duration-300 transition-transform flex flex-col"
               key={id}
             >
-              <img
-                src={logo}
-                className="w-[120px] h-[120px] p-1 rounded-full border-[2px]"
-                alt=""
-              />
-              <div>
-                <div className="px-2 font-bold text-xl mb-2">{name}</div>
-                <p className="px-2 text-gray-700">{text}</p>
+              <div className="flex justify-center bg-gray-50">
+                <img
+                  src={logo}
+                  className="w-full h-60 object-contain"
+                  alt={name}
+                />
               </div>
-              <div className="px-3 py-2 md:px-6 md:py-4 space-x-3 justify-around">
+              <div className="p-3 flex-grow">
+                <h3 className="text-xl font-bold text-center mb-3">{name}</h3>
+                <p className="text-gray-700 text-center">{text}</p>
+              </div>
+              <div className="p-4 text-center">
                 <Link
                   to={link}
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded"
+                  className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold px-6 py-2 rounded transition-colors"
                 >
-                  Live link
+                  Live Link
                 </Link>
               </div>
             </div>

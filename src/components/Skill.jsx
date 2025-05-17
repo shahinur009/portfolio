@@ -84,10 +84,14 @@ function Skill() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-3 my-5">
           {cardItem.map(({ id, logo, name }) => (
             <div
-              className="border-[2px] rounded-lg shadow-lg p-1 cursor-pointer hover:scale-105 duration-300"
+              className="border-[2px] rounded-lg shadow-lg p-1 cursor-pointer hover:scale-105 duration-300 bg-slate-200"
               key={id}
             >
-              <img src={logo} className="w-full p-1 rounded-md h-56" alt="" />
+              <img
+                src={logo}
+                className="w-full p-2 rounded-lg h-full md:h-52"
+                alt=""
+              />
               <div className="text-center">
                 <p>{name}</p>
               </div>

@@ -89,10 +89,10 @@ function Banner() {
               </div>
             </div>
           </div>
-          <div className="md:w-1/2 md:ml-48 md:mt-20 mt-8 order-1">
+          <div className="md:w-1/2 md:ml-48 md:mt-20 mt-8 order-1 flex justify-center items-center">
             <img
               src={pic}
-              className="rounded-full md:w-[450px] md:h-[450px]"
+              className="rounded-full md:w-[480px] md:h-[440px] flex justify-center items-center mx-auto"
               alt=""
             />
           </div>
