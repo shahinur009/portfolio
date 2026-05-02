@@ -9,6 +9,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Project from "../components/Project";
 import Skill from "../components/Skill";
+import Stats from "../components/Stats";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
         <Banner />
         <ClientLogos />
         <About />
+        <Stats />
         <Project />
         <Skill />
         <FAQ />
