@@ -11,7 +11,7 @@ const navItems = ["Home", "About", "Skills", "Projects", "FAQ", "Contact"];
 const resources = [
   {
     label: "Resume / CV",
-    href: "/Shahinur_Resume.pdf",
+    href: "/Md_Shahinur_Islam_Full_Stack_Developer_CV.pdf",
     download: true,
   },
   {

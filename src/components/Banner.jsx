@@ -72,7 +72,7 @@ function Banner() {
                 />
               </Link>
               <a
-                href="/Shahinur_Resume.pdf"
+                href="/Md_Shahinur_Islam_Full_Stack_Developer_CV.pdf"
                 download
                 className="inline-flex items-center gap-2 glass hover:bg-white/5 text-white font-semibold px-6 py-3 rounded-full transition"
               >
