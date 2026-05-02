@@ -1,20 +1,21 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 import {
   FaFacebook,
   FaGithub,
   FaInstagram,
   FaLinkedinIn,
 } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
 
 function Contact() {
   const {
     register,
     handleSubmit,
-
-    formState: { errors },
+    reset,
+    formState: { errors, isSubmitting },
   } = useForm();
 
   const onSubmit = async (data) => {
@@ -25,190 +26,203 @@ function Contact() {
     };
     try {
       await axios.post("https://getform.io/f/bwngggma", userInfo);
-      toast.success("Your message has been sent");
+      toast.success("Message sent. I'll respond within 24 hours.");
+      reset();
     } catch (error) {
-      console.log(error);
-      toast.error("Something went wrong");
+      console.error(error);
+      toast.error("Something went wrong. Email me directly instead.");
     }
   };
+
   return (
-    <div
-      name="Contact"
-      className="grid grid-cols-1 md:grid-cols-2 gap-8 container mx-auto px-4 md:px-10 my-4"
-    >
-      {/* Personal Information Section */}
-      <div className="border-2 border-gray-200 rounded-lg shadow-lg p-6 bg-slate-200">
-        <h1 className="text-3xl font-bold mb-6">Personal Information</h1>
-
-        <div className="space-y-6">
-          <div className="flex items-start">
-            <div className="mr-4 text-gray-500">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
-            </div>
-            <div>
-              <h3 className="font-semibold text-gray-700">Email Address</h3>
-              <p className="text-gray-600">shaheenmis170879@gmail.com</p>
-            </div>
+    <section name="Contact" id="Contact" className="relative">
+      <div className="section-pad">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center max-w-2xl mx-auto mb-14"
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs font-medium mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+            <span className="text-white/70 uppercase tracking-widest">
+              Get in touch
+            </span>
           </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight">
+            Let's Talk About
+            <br />
+            <span className="text-gradient">Your Next Project</span>
+          </h2>
+        </motion.div>
 
-          <div className="flex items-start">
-            <div className="mr-4 text-gray-500">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                />
-              </svg>
-            </div>
-            <div>
-              <h3 className="font-semibold text-gray-700">Mobile Number</h3>
-              <p className="text-gray-600">+880-1744604009 (WhatsApp)</p>
-            </div>
-          </div>
+        <div className="grid lg:grid-cols-5 gap-6">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-2 rounded-3xl bg-bg-card border border-white/5 p-8"
+          >
+            <h3 className="text-2xl font-bold mb-6">Personal Information</h3>
 
-          <div className="flex items-start">
-            <div className="mr-4 text-gray-500">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
+            <div className="space-y-5">
+              <InfoRow
+                Icon={Mail}
+                label="Email"
+                value="shaheenmis170879@gmail.com"
+                href="mailto:shaheenmis170879@gmail.com"
+              />
+              <InfoRow
+                Icon={Phone}
+                label="Mobile / WhatsApp"
+                value="+880 1744 604009"
+                href="tel:+8801744604009"
+              />
+              <InfoRow
+                Icon={MapPin}
+                label="Location"
+                value="Dhaka Cantonment, Dhaka 1206, Bangladesh"
+              />
             </div>
-            <div>
-              <h3 className="font-semibold text-gray-700">Address</h3>
-              <p className="text-gray-600">
-                Dhaka, Bangladesh.
-                <br />
+
+            <div className="pt-8 mt-8 border-t border-white/5">
+              <p className="text-xs uppercase tracking-widest text-white/40 mb-4">
+                Connect with me
               </p>
+              <div className="flex gap-3">
+                <SocialLink
+                  href="https://www.linkedin.com/in/shaheen-ahamed-shahinur/"
+                  Icon={FaLinkedinIn}
+                />
+                <SocialLink
+                  href="https://github.com/shahinur009"
+                  Icon={FaGithub}
+                />
+                <SocialLink
+                  href="https://www.facebook.com/shahin.ahamed.3139"
+                  Icon={FaFacebook}
+                />
+                <SocialLink
+                  href="https://www.instagram.com/shahin.ahamed.3139/?hl=en"
+                  Icon={FaInstagram}
+                />
+              </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Social Media Links */}
-          <div className="pt-4">
-            <h3 className="font-semibold text-gray-700 mb-3">
-              Connect with me
-            </h3>
-            <div className="flex space-x-4">
-              <Link to="https://www.facebook.com/shahin.ahamed.3139">
-                <FaFacebook size={24} />
-              </Link>
-              <Link to="https://github.com/shahinur009">
-                <FaGithub size={24} />
-              </Link>
-              <Link to="https://www.instagram.com/shahin.ahamed.3139/?hl=en">
-                <FaInstagram size={24} />
-              </Link>
-              <Link to="https://www.linkedin.com/in/shaheen-ahamed-shahinur/">
-                <FaLinkedinIn size={24} />
-              </Link>
-            </div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-3 rounded-3xl bg-bg-card border border-white/5 p-8"
+          >
+            <h3 className="text-2xl font-bold mb-6">Send Your Message</h3>
+
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+              <Field
+                label="Full Name"
+                error={errors.name}
+                input={
+                  <input
+                    {...register("name", { required: "Name required" })}
+                    type="text"
+                    placeholder="Your full name"
+                    className="w-full bg-bg-elev border border-white/5 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-accent transition"
+                  />
+                }
+              />
+              <Field
+                label="Email Address"
+                error={errors.email}
+                input={
+                  <input
+                    {...register("email", {
+                      required: "Email required",
+                      pattern: {
+                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                        message: "Invalid email",
+                      },
+                    })}
+                    type="email"
+                    placeholder="you@company.com"
+                    className="w-full bg-bg-elev border border-white/5 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-accent transition"
+                  />
+                }
+              />
+              <Field
+                label="Message"
+                error={errors.message}
+                input={
+                  <textarea
+                    {...register("message", { required: "Message required" })}
+                    rows="5"
+                    placeholder="Tell me about your project..."
+                    className="w-full bg-bg-elev border border-white/5 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-accent transition resize-none"
+                  />
+                }
+              />
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dark text-black font-semibold py-3 rounded-xl transition disabled:opacity-60"
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
+                <Send size={16} />
+              </button>
+            </form>
+          </motion.div>
         </div>
       </div>
+    </section>
+  );
+}
 
-      {/* Contact Form Section */}
-      <div className="border-2 border-gray-200 p-6 rounded-lg shadow-lg bg-slate-200">
-        <h1 className="text-3xl font-bold mb-4">Contact me</h1>
-        <div className="flex flex-col items-center justify-center border-2 shadow-lg">
-          <form onSubmit={handleSubmit(onSubmit)} className="w-full p-2">
-            <h1 className="text-xl font-semibold mb-6">Send Your Message</h1>
-
-            <div className="flex flex-col mb-4">
-              <label className="block text-gray-700 mb-2">Full Name</label>
-              <input
-                {...register("name", { required: true })}
-                className="shadow rounded-lg appearance-none border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                id="name"
-                name="name"
-                type="text"
-                placeholder="Enter your fullname"
-              />
-              {errors.name && (
-                <span className="text-red-500 text-sm mt-1">
-                  This field is required
-                </span>
-              )}
-            </div>
-
-            <div className="flex flex-col mb-4">
-              <label className="block text-gray-700 mb-2">Email Address</label>
-              <input
-                {...register("email", { required: true })}
-                className="shadow rounded-lg appearance-none border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                id="email"
-                name="email"
-                type="email"
-                placeholder="Enter your email address"
-              />
-              {errors.email && (
-                <span className="text-red-500 text-sm mt-1">
-                  This field is required
-                </span>
-              )}
-            </div>
-
-            <div className="flex flex-col mb-6">
-              <label className="block text-gray-700 mb-2">Message</label>
-              <textarea
-                {...register("message", { required: true })}
-                className="shadow rounded-lg appearance-none border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                id="message"
-                name="message"
-                rows="4"
-                placeholder="Enter your query"
-              />
-              {errors.message && (
-                <span className="text-red-500 text-sm mt-1">
-                  This field is required
-                </span>
-              )}
-            </div>
-
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white rounded-lg px-4 py-2 hover:bg-blue-700 duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-            >
-              Send Message
-            </button>
-          </form>
-        </div>
+function InfoRow({ Icon, label, value, href }) {
+  const content = (
+    <div className="flex items-start gap-4">
+      <div className="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent flex-shrink-0">
+        <Icon size={18} />
       </div>
+      <div>
+        <p className="text-xs uppercase tracking-widest text-white/40 mb-1">
+          {label}
+        </p>
+        <p className="text-white font-medium leading-snug">{value}</p>
+      </div>
+    </div>
+  );
+  return href ? (
+    <a href={href} className="block hover:opacity-80 transition">
+      {content}
+    </a>
+  ) : (
+    content
+  );
+}
+
+function SocialLink({ href, Icon }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="w-10 h-10 rounded-xl glass hover:bg-accent hover:text-black flex items-center justify-center transition"
+    >
+      <Icon size={16} />
+    </a>
+  );
+}
+
+function Field({ label, error, input }) {
+  return (
+    <div>
+      <label className="block text-sm text-white/70 mb-2 font-medium">
+        {label}
+      </label>
+      {input}
+      {error && (
+        <p className="text-red-400 text-xs mt-1.5">{error.message}</p>
+      )}
     </div>
   );
 }

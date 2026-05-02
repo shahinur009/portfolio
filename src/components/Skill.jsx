@@ -1,105 +1,114 @@
-import html from "../../public/html.png";
-import css from "../../public/CSS-Logo.jpg";
-import tailwind from "../../public/tailwindcss.png";
-import bootstrap from "../../public/bootstrap.png";
-import javaScript from "../../public/javaScript.webp";
-import reactjs from "../../public/react js.png";
-import express from "../../public/express-js.png";
-import nodejs from "../../public/node js.png";
-import mongoDB from "../../public/mongodb.png";
-import nextjs from "../../public/nextjs.webp";
-import typescript from "../../public/typescript.png";
-import Mongoose from "../../public/mongoose.jpeg";
+import { motion } from "framer-motion";
+import {
+  Layout,
+  Server,
+  Cloud,
+  Database,
+  GitBranch,
+  Lock,
+} from "lucide-react";
+
+const pillars = [
+  {
+    Icon: Layout,
+    title: "Frontend Architecture",
+    desc: "React 19, Next.js 15/16, TypeScript, Tailwind, shadcn/ui, Framer Motion. Accessible, performant, scalable UI systems.",
+    stack: ["React", "Next.js", "TypeScript", "Tailwind", "Zustand"],
+  },
+  {
+    Icon: Server,
+    title: "Backend & API Systems",
+    desc: "Node.js, Express 5, Next.js API routes, REST + Server Actions, WebSockets. Robust APIs with strong contracts.",
+    stack: ["Node.js", "Express", "REST", "Server Actions", "WebSocket"],
+  },
+  {
+    Icon: Cloud,
+    title: "Cloud & DevOps",
+    desc: "Vercel, Netlify, Render, Railway, Docker Compose, GitHub Actions CI/CD, observability and monitoring.",
+    stack: ["Vercel", "Docker", "GitHub Actions", "pnpm monorepo"],
+  },
+  {
+    Icon: Database,
+    title: "Databases & ORMs",
+    desc: "PostgreSQL on Neon/Supabase with Prisma. MongoDB Atlas with Mongoose. Firebase, Upstash Redis caching.",
+    stack: ["PostgreSQL", "Prisma", "MongoDB", "Mongoose", "Redis"],
+  },
+  {
+    Icon: Lock,
+    title: "Auth, Billing & Security",
+    desc: "NextAuth, JWT + refresh, OAuth 2.0, 2FA (TOTP), bcrypt. Stripe + Lemon Squeezy subscriptions, webhooks.",
+    stack: ["NextAuth", "JWT", "Stripe", "OAuth", "2FA"],
+  },
+  {
+    Icon: GitBranch,
+    title: "Engineering Leadership",
+    desc: "Driving technical standards, mentoring developers, aligning engineering execution with product strategy.",
+    stack: ["Code review", "Mentoring", "Agile", "Architecture"],
+  },
+];
 
 function Skill() {
-  const cardItem = [
-    {
-      id: 1,
-      logo: html,
-      name: "HTML",
-    },
-    {
-      id: 2,
-      logo: css,
-      name: "CSS",
-    },
-    {
-      id: 3,
-      logo: tailwind,
-      name: "Tailwind CSS",
-    },
-    {
-      id: 4,
-      logo: bootstrap,
-      name: "Bootstrap",
-    },
-    {
-      id: 5,
-      logo: javaScript,
-      name: "JavaScript",
-    },
-    {
-      id: 6,
-      logo: reactjs,
-      name: "React-JS",
-    },
-    {
-      id: 7,
-      logo: express,
-      name: "Express-JS",
-    },
-    {
-      id: 8,
-      logo: nodejs,
-      name: "Node-JS",
-    },
-    {
-      id: 9,
-      logo: mongoDB,
-      name: "MongoDB",
-    },
-    {
-      id: 10,
-      logo: nextjs,
-      name: "Next-JS",
-    },
-    {
-      id: 11,
-      logo: typescript,
-      name: "Typescript",
-    },
-    {
-      id: 12,
-      logo: Mongoose,
-      name: "Mongoose",
-    },
-  ];
   return (
-    <div
-      name="Skills"
-      className="max-w-screen-2xl container mx-auto px-4 md:px-20 mt-10"
-    >
-      <div>
-        <h1 className="text-3xl font-bold mb-5">Skills</h1>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-3 my-5">
-          {cardItem.map(({ id, logo, name }) => (
-            <div
-              className="border-[2px] rounded-lg shadow-lg p-1 cursor-pointer hover:scale-105 duration-300 bg-slate-200"
-              key={id}
+    <section name="Skills" id="Skills" className="relative">
+      <div className="section-pad">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-3xl mb-14"
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs font-medium mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+            <span className="text-white/70 uppercase tracking-widest">
+              Technical Expertise
+            </span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
+            Built Across
+            <br />
+            <span className="text-gradient">the Full Stack.</span>
+          </h2>
+          <p className="mt-5 text-white/60 max-w-xl">
+            My expertise spans frontend systems, backend architecture,
+            infrastructure, and performance optimization.
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {pillars.map((p, i) => (
+            <motion.div
+              key={p.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+              className="group relative rounded-2xl bg-bg-card border border-white/5 p-7 hover:border-accent/40 transition overflow-hidden"
             >
-              <img
-                src={logo}
-                className="w-full p-2 rounded-lg h-full md:h-52"
-                alt=""
-              />
-              <div className="text-center">
-                <p>{name}</p>
+              <div className="absolute -top-12 -right-12 w-32 h-32 bg-accent/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition" />
+              <div className="relative">
+                <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent mb-5 group-hover:bg-accent group-hover:text-black transition">
+                  <p.Icon size={22} />
+                </div>
+                <h3 className="text-xl font-bold mb-3">{p.title}</h3>
+                <p className="text-sm text-white/60 leading-relaxed mb-5">
+                  {p.desc}
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {p.stack.map((s) => (
+                    <span
+                      key={s}
+                      className="text-[11px] px-2.5 py-1 rounded-full bg-white/5 text-white/70 border border-white/5"
+                    >
+                      {s}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

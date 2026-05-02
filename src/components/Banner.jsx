@@ -1,106 +1,146 @@
+import { motion } from "framer-motion";
 import { ReactTyped } from "react-typed";
-import pic from "../../public/shahin.png";
-import {
-  FaInstagram,
-  FaLinkedin,
-  FaNodeJs,
-  FaReact,
-  FaSquareFacebook,
-} from "react-icons/fa6";
-import { FaGithub } from "react-icons/fa";
-import { SiExpress, SiTypescript } from "react-icons/si";
-import { RiNextjsLine } from "react-icons/ri";
+import { ArrowUpRight, Download, Sparkles } from "lucide-react";
+import pic from "/shahin.png";
+import { Link } from "react-scroll";
 
 function Banner() {
   return (
-    <>
-      <div
-        name="Home"
-        className="max-w-screen-2xl container mx-auto px-4 md:px-20 my-28"
-      >
-        <div className="flex flex-col md:flex-row">
-          <div className="md:w-1/2 mt-12 md:mt-24 space-y-2 order-2 md:order-1">
-            <span className="text-xl">Welcome In My Feed</span>
-            <div className="flex space-x-1 text-2xl md:text-4xl">
-              <h1>Hello, I am a</h1>
-              {/* <span >Developer</span> */}
+    <section
+      name="Home"
+      id="Home"
+      className="relative min-h-screen flex items-center pt-24 overflow-hidden"
+    >
+      <div className="absolute inset-0 grid-bg radial-fade pointer-events-none" />
+      <div className="absolute top-1/3 -left-32 w-96 h-96 bg-accent/20 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent/10 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="section-pad relative z-10 w-full">
+        <div className="grid lg:grid-cols-12 gap-10 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-7 space-y-6"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+              <span className="text-white/70">Available for new projects</span>
+            </div>
+
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black leading-[0.95] tracking-tight">
+              Architecting the
+              <br />
+              <span className="text-gradient">Modern Web</span>
+            </h1>
+
+            <div className="flex items-center gap-3 text-xl md:text-2xl text-white/70 font-medium">
+              <span>I am a</span>
               <ReactTyped
-                className="text-red-700 font-bold"
-                strings={["Developer", "Programmer", "Coder"]}
-                typeSpeed={40}
-                backSpeed={50}
-                loop={true}
+                className="text-accent font-bold"
+                strings={[
+                  "Full Stack Developer",
+                  "Next.js Engineer",
+                  "Node.js Architect",
+                  "MERN Specialist",
+                ]}
+                typeSpeed={50}
+                backSpeed={40}
+                loop
               />
             </div>
-            <br />
-            <p className="text-sm md:text-md text-justify">
-              I am Shahinur, a passionate Web developer with a keen eye for MERN
-              Stack . With a background in IT, I strive to create impactful and
-              visually stunning web development solutions that leave a lasting
-              impression.
+
+            <p className="text-base md:text-lg text-white/60 max-w-xl leading-relaxed">
+              I am Md. Shahinur Islam — Full Stack Developer with 2+ years
+              shipping production SaaS. Specializing in Next.js, React,
+              Node.js, PostgreSQL, and MongoDB. I turn complex ideas into fast,
+              reliable, and maintainable applications.
             </p>
-            <button className="btn btn-warning">Download CV</button>
-            <br />
-            {/* social media icons */}
-            <div className="flex flex-col items-center md:flex-row justify-between space-y-6 md:space-y-0">
-              <div className="  space-y-2">
-                <h1 className="font-bold text-center ">Available on</h1>
-                <ul className="flex space-x-5">
-                  <li>
-                    <a
-                      href="https://www.facebook.com/shahin.ahamed.3139"
-                      target="_blank"
-                    >
-                      <FaSquareFacebook className="text-2xl cursor-pointer" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://www.linkedin.com/in/shaheen-ahamed-shahinur/"
-                      target="_blank"
-                    >
-                      <FaLinkedin className="text-2xl cursor-pointer" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/shahinur009" target="_blank">
-                      <FaGithub className="text-2xl cursor-pointer" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://www.instagram.com/shahin.ahamed.3139/?hl=en"
-                      target="_blank"
-                    >
-                      <FaInstagram className="text-2xl cursor-pointer" />
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div className=" space-y-2">
-                <h1 className="font-bold text-center">Currently working on</h1>
-                <div className="flex space-x-5">
-                  <SiExpress className="text-2xl md:text-3xl hover:scale-110 duration-200 rounded-full border-[2px] cursor-pointer" />
-                  <FaReact className="text-2xl md:text-3xl hover:scale-110 duration-200 rounded-full border-[2px] cursor-pointer" />
-                  <RiNextjsLine className="text-2xl md:text-3xl hover:scale-110 duration-200 rounded-full border-[2px] cursor-pointer" />
-                  <SiTypescript className="text-2xl md:text-3xl hover:scale-110 duration-200 rounded-full border-[2px] cursor-pointer" />
-                  <FaNodeJs className="text-2xl md:text-3xl hover:scale-110 duration-200 rounded-full border-[2px] cursor-pointer" />
+
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <Link
+                to="Projects"
+                smooth={true}
+                duration={500}
+                offset={-70}
+                className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-black font-semibold px-6 py-3 rounded-full cursor-pointer transition"
+              >
+                View Projects
+                <ArrowUpRight
+                  size={18}
+                  className="group-hover:rotate-45 transition"
+                />
+              </Link>
+              <a
+                href="/Shahinur_Resume.pdf"
+                download
+                className="inline-flex items-center gap-2 glass hover:bg-white/5 text-white font-semibold px-6 py-3 rounded-full transition"
+              >
+                <Download size={18} />
+                Download CV
+              </a>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="lg:col-span-5 relative"
+          >
+            <div className="relative aspect-square max-w-md mx-auto">
+              <div className="absolute inset-0 rounded-full border border-white/10 animate-spin-slow" />
+              <div
+                className="absolute inset-4 rounded-full border border-accent/30 animate-spin-slow"
+                style={{ animationDirection: "reverse" }}
+              />
+              <div className="absolute inset-8 rounded-full border border-white/5" />
+
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-accent/40 accent-glow">
+                  <img
+                    src={pic}
+                    alt="Shahinur Islam"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
+
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.6 }}
+                className="absolute -bottom-4 -left-4 md:bottom-8 md:-left-8 glass rounded-2xl p-4 max-w-[200px]"
+              >
+                <div className="flex items-center gap-2 mb-1">
+                  <Sparkles size={14} className="text-accent" />
+                  <span className="text-xs text-white/70">2+ years exp</span>
+                </div>
+                <p className="text-sm font-semibold leading-tight">
+                  Hi, I'm Shahinur
+                </p>
+                <p className="text-xs text-white/50 mt-1 leading-tight">
+                  Specializing in modern web stacks — building fast, reliable
+                  apps.
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8 }}
+                className="absolute top-4 -right-2 md:top-12 md:-right-6 glass rounded-2xl p-3"
+              >
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                  <span className="text-xs font-medium">Open to remote</span>
+                </div>
+              </motion.div>
             </div>
-          </div>
-          <div className="md:w-1/2 md:ml-48 md:mt-20 mt-8 order-1 ">
-            <img
-              src={pic}
-              className="rounded-full md:w-[380px] md:h-[340px] flex mx-auto bg-slate-200"
-              alt=""
-            />
-          </div>
+          </motion.div>
         </div>
       </div>
-
-      <hr />
-    </>
+    </section>
   );
 }
 
